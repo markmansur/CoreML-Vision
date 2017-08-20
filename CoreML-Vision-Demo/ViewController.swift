@@ -12,8 +12,6 @@ import CoreML
 import Vision
 
 class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
-    
-    let captureSession = AVCaptureSession()
     let label: UILabel = {
         let label = UILabel()
         label.textColor = .white
@@ -23,6 +21,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         return label
     }()
     
+    let captureSession = AVCaptureSession()
     var captureDevice: AVCaptureDevice?
     var previewLayer: AVCaptureVideoPreviewLayer?
     
@@ -30,7 +29,6 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         super.viewDidLoad()
         
         let discoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera], mediaType: AVMediaType.video, position: .back)
-//        print(discoverySession.devices)
         
         captureDevice = discoverySession.devices[0]
         setupCaptureSession()
@@ -46,7 +44,13 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     }
     
     func setupCaptureSession() {
-        configureDevice()
+        do {
+            try captureDevice?.lockForConfiguration()
+        } catch _ {
+            return
+        }
+        captureDevice?.focusMode = .continuousAutoFocus
+        captureDevice?.unlockForConfiguration()
         
         do {
             let captureDeviceInput = try AVCaptureDeviceInput(device: captureDevice!)
@@ -67,17 +71,6 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         captureSession.startRunning()
     }
     
-    func configureDevice() {
-        do {
-            try captureDevice?.lockForConfiguration()
-        } catch _ {
-            return
-        }
-        captureDevice?.focusMode = .continuousAutoFocus
-        captureDevice?.unlockForConfiguration()
-    }
-    
-    
     // called everytime a frame is captured
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         guard let model = try? VNCoreMLModel(for: Resnet50().model) else {return}
@@ -86,8 +79,6 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             
             guard let results = finishedRequest.results as? [VNClassificationObservation] else { return }
             guard let Observation = results.first else {return }
-            
-//            print (Observation.identifier,Observation.confidence)
             
             DispatchQueue.main.async(execute: {
                 self.label.text = "\(Observation.identifier)"
@@ -98,9 +89,5 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         
         // executes request
         try? VNImageRequestHandler(cvPixelBuffer: pixelBuffer, options: [:]).perform([request])
-        
     }
-    
-
 }
-

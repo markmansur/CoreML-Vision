@@ -7,20 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D4C6F4C1F4A3BFC00A405A9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4C6F4B1F4A3BFC00A405A9 /* ViewController.swift */; };
 		4D5AB9BB1F31533300099717 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5AB9BA1F31533300099717 /* AppDelegate.swift */; };
 		4D5AB9C21F31533300099717 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D5AB9C11F31533300099717 /* Assets.xcassets */; };
 		4D5AB9C51F31533300099717 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D5AB9C31F31533300099717 /* LaunchScreen.storyboard */; };
-		4D5AB9CD1F31538E00099717 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5AB9CC1F31538E00099717 /* ViewController.swift */; };
 		4D5AB9CF1F31539C00099717 /* Resnet50.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 4D5AB9CE1F31539C00099717 /* Resnet50.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4D4C6F4B1F4A3BFC00A405A9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4D5AB9B71F31533300099717 /* CoreML-Vision-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CoreML-Vision-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D5AB9BA1F31533300099717 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4D5AB9C11F31533300099717 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4D5AB9C41F31533300099717 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4D5AB9C61F31533300099717 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4D5AB9CC1F31538E00099717 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ../../cameraTest/cameraTest/ViewController.swift; sourceTree = "<group>"; };
 		4D5AB9CE1F31539C00099717 /* Resnet50.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = Resnet50.mlmodel; path = ../../../Downloads/Resnet50.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -55,7 +55,7 @@
 			isa = PBXGroup;
 			children = (
 				4D5AB9BA1F31533300099717 /* AppDelegate.swift */,
-				4D5AB9CC1F31538E00099717 /* ViewController.swift */,
+				4D4C6F4B1F4A3BFC00A405A9 /* ViewController.swift */,
 				4D5AB9CE1F31539C00099717 /* Resnet50.mlmodel */,
 				4D5AB9C11F31533300099717 /* Assets.xcassets */,
 				4D5AB9C31F31533300099717 /* LaunchScreen.storyboard */,
@@ -134,7 +134,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D5AB9CD1F31538E00099717 /* ViewController.swift in Sources */,
+				4D4C6F4C1F4A3BFC00A405A9 /* ViewController.swift in Sources */,
 				4D5AB9CF1F31539C00099717 /* Resnet50.mlmodel in Sources */,
 				4D5AB9BB1F31533300099717 /* AppDelegate.swift in Sources */,
 			);
@@ -304,6 +304,7 @@
 				4D5AB9CB1F31533300099717 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
