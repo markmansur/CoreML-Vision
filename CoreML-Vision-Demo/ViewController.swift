@@ -8,7 +8,6 @@
 
 import UIKit
 import AVFoundation
-import CoreML
 import Vision
 
 class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
@@ -21,52 +20,39 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         return label
     }()
     
-    let captureSession = AVCaptureSession()
-    var captureDevice: AVCaptureDevice?
-    var previewLayer: AVCaptureVideoPreviewLayer?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let discoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera], mediaType: AVMediaType.video, position: .back)
-        
-        captureDevice = discoverySession.devices[0]
         setupCaptureSession()
         
         view.addSubview(label)
         setupLabel()
-        
-    }
-    
-    func setupLabel() {
-        label.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        label.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50).isActive = true
     }
     
     func setupCaptureSession() {
-        do {
-            try captureDevice?.lockForConfiguration()
-        } catch _ {
-            return
-        }
-        captureDevice?.focusMode = .continuousAutoFocus
-        captureDevice?.unlockForConfiguration()
+        let captureSession = AVCaptureSession()
         
+        // search for available capture devices
+        let availableDevices = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera], mediaType: AVMediaType.video, position: .back).devices
+        
+        // setup capture device, add input to our capture session
         do {
-            let captureDeviceInput = try AVCaptureDeviceInput(device: captureDevice!)
-            captureSession.addInput(captureDeviceInput)
-            
-            let captureOutput = AVCaptureVideoDataOutput()
-            captureOutput.setSampleBufferDelegate(self, queue: DispatchQueue(label: "videoQueue"))
-            captureSession.addOutput(captureOutput)
-            
-        } catch _ {
-            return
+            if let captureDevice = availableDevices.first {
+                let captureDeviceInput = try AVCaptureDeviceInput(device: captureDevice)
+                captureSession.addInput(captureDeviceInput)
+            }
+        } catch {
+            print(error.localizedDescription)
         }
         
-        previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-        previewLayer?.frame = view.frame
-        view.layer.addSublayer(previewLayer!)
+        // setup output, add output to our capture session
+        let captureOutput = AVCaptureVideoDataOutput()
+        captureOutput.setSampleBufferDelegate(self, queue: DispatchQueue(label: "videoQueue"))
+        captureSession.addOutput(captureOutput)
+        
+        let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+        previewLayer.frame = view.frame
+        view.layer.addSublayer(previewLayer)
         
         captureSession.startRunning()
     }
@@ -78,16 +64,20 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         let request = VNCoreMLRequest(model: model) { (finishedRequest, error) in
             
             guard let results = finishedRequest.results as? [VNClassificationObservation] else { return }
-            guard let Observation = results.first else {return }
+            guard let Observation = results.first else { return }
             
             DispatchQueue.main.async(execute: {
                 self.label.text = "\(Observation.identifier)"
             })
         }
-        
         guard let pixelBuffer: CVPixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
         
         // executes request
         try? VNImageRequestHandler(cvPixelBuffer: pixelBuffer, options: [:]).perform([request])
+    }
+    
+    func setupLabel() {
+        label.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        label.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50).isActive = true
     }
 }
