@@ -11,7 +11,7 @@
 		4D5AB9BB1F31533300099717 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5AB9BA1F31533300099717 /* AppDelegate.swift */; };
 		4D5AB9C21F31533300099717 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D5AB9C11F31533300099717 /* Assets.xcassets */; };
 		4D5AB9C51F31533300099717 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D5AB9C31F31533300099717 /* LaunchScreen.storyboard */; };
-		4D5BE6C91F4F9D4300A108C3 /* Resnet50.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 4D5BE6C81F4F9D4300A108C3 /* Resnet50.mlmodel */; };
+		4DDECEBC1F8465380080BEA2 /* Resnet50.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 4DDECEBB1F8464F70080BEA2 /* Resnet50.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,7 +21,7 @@
 		4D5AB9C11F31533300099717 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4D5AB9C41F31533300099717 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4D5AB9C61F31533300099717 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4D5BE6C81F4F9D4300A108C3 /* Resnet50.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = Resnet50.mlmodel; path = "../../../Library/Mobile Documents/com~apple~CloudDocs/.Trash/Resnet50.mlmodel"; sourceTree = "<group>"; };
+		4DDECEBB1F8464F70080BEA2 /* Resnet50.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Resnet50.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,8 +56,8 @@
 			children = (
 				4D5AB9BA1F31533300099717 /* AppDelegate.swift */,
 				4D4C6F4B1F4A3BFC00A405A9 /* ViewController.swift */,
-				4D5BE6C81F4F9D4300A108C3 /* Resnet50.mlmodel */,
 				4D5AB9C11F31533300099717 /* Assets.xcassets */,
+				4DDECEBB1F8464F70080BEA2 /* Resnet50.mlmodel */,
 				4D5AB9C31F31533300099717 /* LaunchScreen.storyboard */,
 				4D5AB9C61F31533300099717 /* Info.plist */,
 			);
@@ -91,11 +91,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0900;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = "Mark Mansur";
 				TargetAttributes = {
 					4D5AB9B61F31533300099717 = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 1000;
 					};
 				};
 			};
@@ -135,7 +136,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D4C6F4C1F4A3BFC00A405A9 /* ViewController.swift in Sources */,
-				4D5BE6C91F4F9D4300A108C3 /* Resnet50.mlmodel in Sources */,
+				4DDECEBC1F8465380080BEA2 /* Resnet50.mlmodel in Sources */,
 				4D5AB9BB1F31533300099717 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -168,12 +169,16 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
@@ -223,12 +228,16 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
@@ -263,10 +272,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = EYSSST7CZ9;
 				INFOPLIST_FILE = "CoreML-Vision-Demo/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.MarkMansur.CoreML-Vision-Demo";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.MarkMansur.CoreML-Vision2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -277,10 +287,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = EYSSST7CZ9;
 				INFOPLIST_FILE = "CoreML-Vision-Demo/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.MarkMansur.CoreML-Vision-Demo";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.MarkMansur.CoreML-Vision2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

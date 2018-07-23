@@ -30,6 +30,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     }
     
     
+    
     func setupCaptureSession() {
         
         // creates a new capture session
@@ -69,9 +70,10 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             
             DispatchQueue.main.async(execute: {
                 self.label.text = "\(Observation.identifier)"
+                print(Observation.confidence)
             })
         }
-        guard let pixelBuffer: CVPixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
+        guard let pixelBuffer: CVPixelBuffer = sampleBuffer.imageBuffer else { return }
         
         // executes request
         try? VNImageRequestHandler(cvPixelBuffer: pixelBuffer, options: [:]).perform([request])
