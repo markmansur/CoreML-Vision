@@ -74,7 +74,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
                 print(Observation.confidence)
             })
         }
-        guard let pixelBuffer: CVPixelBuffer = sampleBuffer.imageBuffer else { return }
+        guard let pixelBuffer: CVPixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
         
         // executes request
         try? VNImageRequestHandler(cvPixelBuffer: pixelBuffer, options: [:]).perform([request])
